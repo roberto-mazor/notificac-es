@@ -2,11 +2,32 @@ import { StyleSheet, View } from 'react-native'
 import React from 'react'
 
 import Button from './scr/components/button'
+import { envioImediatoNotificacao, requestPermissaoNoticacao } from './scr/services/notifications' 
+
 
 export default function App() {
+  async function fnExecutar(acao:() => Promise<void>) {
+    const permitido = await requestPermissaoNoticacao();
+
+    if (!permitido){
+      alert("Permissão Negada.")
+      return;
+    }
+
+    await acao()
+  }
+
+
+
+
   return (
     <View style={styles.container}>
-      <Button title='Primeiro button'>
+      
+      <Button title='Notificações Imiediatas' onPress={() => fnExecutar(envioImediatoNotificacao)}/>
+      <Button title='Segundo button' />
+      <Button title='Terceiro button' />
+      <Button title='Quarto button' />
+      <Button title='Quinto button' />
     </View>
   )
 }
