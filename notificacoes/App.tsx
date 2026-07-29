@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native'
 import React from 'react'
 
 import Button from './scr/components/button'
-import { envioImediatoNotificacao, requestPermissaoNoticacao } from './scr/services/notifications' 
+import { envioImediatoNotificacao, requestPermissaoNoticacao, envioDelayNoticacao, cancelarNotificacaoes, envioSomNotificacao } from './scr/services/notifications' 
 
 
 export default function App() {
@@ -24,10 +24,10 @@ export default function App() {
     <View style={styles.container}>
       
       <Button title='Notificações Imiediatas' onPress={() => fnExecutar(envioImediatoNotificacao)}/>
-      <Button title='Segundo button' />
+      <Button title='Apos 5 segundos' onPress={() => fnExecutar(envioDelayNoticacao)} />
       <Button title='Terceiro button' />
-      <Button title='Quarto button' />
-      <Button title='Quinto button' />
+      <Button title='Cancelar Notificações' onPress={() => fnExecutar(cancelarNotificacaoes)} />
+      <Button title='Enviar Som' onPress={() => fnExecutar(envioSomNotificacao)} />
     </View>
   )
 }
