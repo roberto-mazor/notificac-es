@@ -4,6 +4,7 @@ import React from 'react'
 import Button from './scr/components/button'
 import { envioImediatoNotificacao, requestPermissaoNoticacao, envioDelayNoticacao, cancelarNotificacaoes, envioSomNotificacao } from './scr/services/notifications' 
 
+import { vibracaoSimples } from './scr/services/vibration'
 
 export default function App() {
   async function fnExecutar(acao:() => Promise<void>) {
@@ -25,9 +26,9 @@ export default function App() {
       
       <Button title='Notificações Imiediatas' onPress={() => fnExecutar(envioImediatoNotificacao)}/>
       <Button title='Apos 5 segundos' onPress={() => fnExecutar(envioDelayNoticacao)} />
-      <Button title='Terceiro button' />
       <Button title='Cancelar Notificações' onPress={() => fnExecutar(cancelarNotificacaoes)} />
       <Button title='Enviar Som' onPress={() => fnExecutar(envioSomNotificacao)} />
+      <Button title='Vibra Simples' onPress={vibracaoSimples}/>
     </View>
   )
 }
